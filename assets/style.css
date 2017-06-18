@@ -1,9 +1,15 @@
 .main {
-		background-image: url("./images/cta_map.png");
-		background-repeat: no-repeat;
-		background-color: #1e1d1d;
-		background-position: top right;
+	background-image: url("./images/cta_map.png");
+	background-repeat: no-repeat;
+	background-color: #1e1d1d;
+	background-position: top right;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
 
 
 }
 
+.container {
+	margin: 100px ;
+	height: 500px;
+}
