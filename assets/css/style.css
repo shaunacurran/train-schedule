@@ -4,16 +4,14 @@
 	background-color: #1e1d1d;
 	background-position: top right;
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 15px;
+	font-size: 18px;
 	
-
-
 }
 
 .container {
 	padding: 50px;
-	height: 500px;	
-	color: #ffffff;
+	height: 400px;	
+	color: #000000;
 
 }
 
