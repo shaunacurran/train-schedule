@@ -5,7 +5,7 @@
 	background-position: top right;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 15px;
-	color: #ffffff;
+	
 
 
 }
@@ -17,3 +17,8 @@
 
 }
 
+.page-header { 
+	border-bottom:none; 
+	color: #ffffff;
+
+}
