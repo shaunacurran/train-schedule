@@ -28,7 +28,15 @@
     						<h3 class="panel-title">Current Train Schedule</h3>
   						</div>
   						<div class="panel-body">
-    					Lorem ipsum dolor sit amet, quisque donec in nunc elit id. Enim quam purus. Neque eget id leo. Suspendisse magna vulputate neque integer elementum massa, donec dictum ligula tristique sem, lobortis nulla sed urna in pretium in, enim morbi risus, ultrices nullam commodo justo. Et pellentesque sit sit, nec dolor in
+    					<table>
+								<tr>
+							<th>Train Name</th>
+							<th>Destination</th>
+							<th>Frequency (min)</th>
+							<th>Next Arrival</th>
+							<th>Minutes Away</th>
+								</tr>
+							</table>
   						</div>
 					</div>		
 				</div>
@@ -41,15 +49,47 @@
     						<h3 class="panel-title">Add Train</h3>
   						</div>
   						<div class="panel-body">
-    					Lorem ipsum dolor sit amet, quisque donec in nunc elit id. Enim quam purus. Neque eget id leo. Suspendisse magna vulputate neque integer elementum massa, donec dictum ligula tristique sem, lobortis nulla sed urna in pretium in, enim morbi risus, ultrices nullam commodo justo. Et pellentesque sit sit, nec dolor in
+    					<label>Train Name</label>
+							<br>
+							<input type="text" name="trainName">
+							<br>
+							<label>Destination</label>
+							<br>
+							<input type="text" name="trainDest">
+							<br>
+							<label>First Train Time (HH:mm - military time)</label>
+							<br>
+							<input type="time" name="trainTime">
+							<br>
+							<label>Frequency (min)</label>
+							<br>
+							<input type="time" name="trainFrequency">
+							<br>
+							<button>Submit</button>
   						</div>
 					</div>		
 				</div>
 			</div>
 
 
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBzrk9G8vl1SrTmbgJtL8w7_ZJ_astIPwM",
+    authDomain: "train-schedule-5d8d3.firebaseapp.com",
+    databaseURL: "https://train-schedule-5d8d3.firebaseio.com",
+    projectId: "train-schedule-5d8d3",
+    storageBucket: "train-schedule-5d8d3.appspot.com",
+    messagingSenderId: "592806784248"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
 
 
+
+</script>
 
 
 	</body>
