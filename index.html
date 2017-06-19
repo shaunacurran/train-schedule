@@ -32,11 +32,11 @@
 							<table class="table table-hover" id='trainTable'>
 							<thead>
 								<tr>
-									<th>Train Name</th>
-									<th>Destination</th>
-									<th>Frequency</th>
-									<th>Next Arrival</th>
-									<th>Minutes Away</th>
+									<th id="tName">Train Name</th>
+									<th id="tDestination">Destination</th>
+									<th id="tFrequency">Frequency</th>
+									<th id="tTime">Next Arrival</th>
+									
 								</tr>
 							</thead>
 							<tbody>
@@ -92,7 +92,7 @@
     projectId: "train-schedule-5d8d3",
     storageBucket: "train-schedule-5d8d3.appspot.com",
     messagingSenderId: "592806784248"
-  };
+};
   firebase.initializeApp(config);
 
    	var database = firebase.database();
@@ -106,7 +106,7 @@
     var trainTime = "";
     var frequency = "";
 
-};
+});
 
 	// Capture Button Click
     $("#submitAll").on("click", function() {
@@ -123,9 +123,10 @@
         destination: destination,
         trainTime: time,
         frequency: frequency
-    });
-
+       
 });
+
+	
 
     //Firebase watcher + initial loader HINT: .on("value")
     database.ref().on("value", function(snapshot) {
@@ -147,6 +148,7 @@
 // Handle the errors
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
+    
     });
 	
 
