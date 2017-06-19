@@ -1,5 +1,5 @@
 .main {
-	background-image: url("./images/cta_map.png");
+	background-image: url("../images/cta_map.png");
 	background-repeat: no-repeat;
 	background-color: #1e1d1d;
 	background-position: top right;
@@ -11,7 +11,8 @@
 
 .container {
 	padding: 50px;
-	height: 500px;
-	
+	height: 500px;	
+	color: #ffffff;
 
 }
+

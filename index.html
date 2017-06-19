@@ -1,179 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<!--mobile viewport-->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Train Schedule </title>
-
-	<!-- Latest compiled and minified CSS Bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<!--my style sheet-->
-	<link rel="stylesheet" type="text/css" href="./assets/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-	<!-- jquery CDN -->
-	<script
-	src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <!-- Link to Moment.js  -->
-  	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
+    <meta charset="UTF-8">
+    <title>Train Scheduler</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
 </head>
 <body>
-	<body class="main">
-		<div class="container">
-  			<div class="row">
-  				<div class="col-md-6">
-  				<!--panel displaying info inputed by user-->
-  					<div class="panel panel-default">
-  						<div class="panel-heading">
-    						<h3 class="panel-title">Current Train </h3>
-  						</div>
-  						<div class="panel-body">
-							<table class="table table-hover" id='trainTable'>
-							<thead>
-								<tr>
-									<th id="tName">Train Name</th>
-									<th id="tDestination">Destination</th>
-									<th id="tFrequency">Frequency</th>
-									<th id="tTime">Next Arrival</th>
-									
-								</tr>
-							</thead>
-							<tbody>
-								
-							</tbody>
-						</table>
-  						</div>
-					</div>		
-				</div>
-			</div>
-		<!-- panel for user to input information -->
-			<div class=row>
-				<div class="col-md-6">
-					<div class="panel panel-default">
-  						<div class="panel-heading">
-    						<h3 class="panel-title">Add Train</h3>
-  						</div>
-
-  						<div class="panel-body">
-    					<label>Train Name</label>
-							<br>
-							<input type="text" name="trainNameInput">
-							<br>
-							<label>Destination</label>
-							<br>
-							<input type="text" name="destinationInput">
-							<br>
-							<label>First Train Time (HH:mm - military time)</label>
-							<br>
-							<input type="text" name="trainTimeInput">
-							<br>
-							<label>Frequency (min)</label>
-							<br>
-							<input type="text" name="frequencyInput">
-							<br>
-							<button id="submitAll">Submit</button>
-					
-  						</div>
-					</div>		
-				</div>
-			</div>
-
-
-<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-    <script>
-
+    <body class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">Train Name</div>
+                            <div class="col-xs-3">Destination</div>
+                            <div class="col-xs-2">Freq. (min)</div>
+                            <div class="col-xs-2">Next Arrival</div>
+                            <div class="col-xs-2">Minutes Away</div>
+                        </div>
+                    </div>
+                    <div class="panel-body" id="schedContainer"></div>
+                </div>
+            </div>
+        </div>
     
-   // Initialize Firebase
-    var config = {
-    apiKey: "AIzaSyBzrk9G8vl1SrTmbgJtL8w7_ZJ_astIPwM",
-    authDomain: "train-schedule-5d8d3.firebaseapp.com",
-    databaseURL: "https://train-schedule-5d8d3.firebaseio.com",
-    projectId: "train-schedule-5d8d3",
-    storageBucket: "train-schedule-5d8d3.appspot.com",
-    messagingSenderId: "592806784248"
-};
-  firebase.initializeApp(config);
-
-   	var database = firebase.database();
-
-    // 2. Button for adding Trains
-    $(document).on("click", "#submitAll", function() {
-
-    // Initial Values
-    var trainName = "";
-    var destination = "";
-    var trainTime = "";
-    var frequency = "";
-
-});
-
-	// Capture Button Click
-    $("#submitAll").on("click", function() {
-    // Don't refresh the page!
-    event.preventDefault();
-
-    trainName = $("#trainNameInput").val().trim();
-    destination = $("#destinationInput").val().trim();
-    trainTime = $("#trainTimeInput").val().trim();
-    frequency = $("#frequencyInput").val().trim();
-
-    database.ref().set({
-    	name: name,
-        destination: destination,
-        time: time,
-        frequency: frequency
-       });
-});
-
-	
-
-    //Firebase watcher + initial loader HINT: .on("value")
-    database.ref().on("value", function(snapshot) {
-
-    	// Log everything that's coming out of snapshot
-      console.log(snapshot.val());
-      console.log(snapshot.val().name);
-      console.log(snapshot.val().destination);
-      console.log(snapshot.val().time);
-      console.log(snapshot.val().frequency);
-
-  
-    // Change the HTML to reflect
-    $("#tName").html(snapshot.val().name);
-    $("#tDestination").html(snapshot.val().destination);
-    $("#tTime").html(snapshot.val().time);
-    $("#tFrequency").html(snapshot.val().frequency);
-
-// Handle the errors
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-    
-    });
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
-
-	
+          
+        <div class="row">    
+            <div class="col-sm-6">
+                <form>
+                    <div class="form-group">
+                        <label for="inputName">Train Name</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDestination">Destination</label>
+                        <input type="text" class="form-control" id="inputDestination" placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFirstTime">First Train Time (HH:mm - military time)</label>
+                        <input type="text" class="form-control" id="inputFirstTime" placeholder="24:00">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFrequency">Frequency (min)</label>
+                        <input type="text" class="form-control" id="inputFrequency" placeholder="60">
+                    </div>
+                    <button type="button" class="btn btn-default btn-md btn-block" id="addTrainBtn">Add Train to Schedule</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </body>
 </html>
